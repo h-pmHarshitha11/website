@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ISTE PESCE</title>
+    <link rel="icon" href="images/iste logo.jpeg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
+            color: #ffffff;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .particle-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 70%, transparent 100%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(odd) {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0.1) 70%, transparent 100%);
+            animation-duration: 12s;
+        }
+
+        .particle:nth-child(even) {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.6) 0%, rgba(139, 92, 246, 0.1) 70%, transparent 100%);
+            animation-duration: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-15px) rotate(90deg) scale(1.05);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg) scale(0.95);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-15px) rotate(270deg) scale(1.02);
+                opacity: 0.7;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 1rem;
+        }
+
+        .navbar .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar .logo span {
+            color: white;
+            font-weight: 700;
+        }
+
+        .navbar .site-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            min-width: 200px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            height: fit-content;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #6366f1;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-method:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-method .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-method .details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+            color: #f1f5f9;
+        }
+
+        .contact-method .details p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .contact-form h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #6366f1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Team Section */
+        .team-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #6366f1;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .team-member img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #6366f1;
+        }
+
+        .team-member h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+        }
+
+        .team-member p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .team-member .contact-info {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #6366f1;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .social-link img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-text {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.4s; }
+        .fade-in:nth-child(4) { animation-delay: 0.6s; }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="particle-bg" id="particle-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <div class="logo">
+                <span>ISTE</span>
+            </div>
+            <span class="site-title">ISTE</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Event</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Student Chapters</a>
+                <ul class="dropdown-menu">
+                    <li><a href="istewings.html">ISTE WINGS</a></li>
+                    <li><a href="istearcs.html">ISTE ARCS</a></li>
+                </ul>
+            </li>
+            <li><a href="our_team.html">Our Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section fade-in">
+        <h1>Get In Touch</h1>
+        <p>Connect with ISTE PESCE team members and explore various ways to reach us. We're here to help and collaborate!</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Contact Grid -->
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info fade-in">
+                <h2>Contact Information</h2>
+                
+                <a href="https://www.instagram.com/pesce.iste/" target="_blank" class="contact-method">
+                    <div class="icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Instagram</h3>
+                        <p>Follow us for updates and events</p>
+                    </div>
+                </a>
+
+                <a href="https://www.linkedin.com/company/iste-pesce/" target="_blank" class="contact-method">
+                    <div class="icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="details">
+                        <h3>LinkedIn</h3>
+                        <p>Connect professionally with our team</p>
+                    </div>
+                </a>
+
+                <a href="mailto:iste@pesce.ac.in" class="contact-method">
+                    <div class="icon">
+                        <i class="far fa-envelope"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Email</h3>
+                        <p>iste@pesce.ac.in</p>
+                    </div>
+                </a>
+
+                <a href="tel:+918012345678" class="contact-method">
+                    <div class="icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="details">
+                        <h3>Phone</h3>
+                        <p>+91 8012345678</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form fade-in">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="events">Events & Activities</option>
+                            <option value="membership">Membership</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section fade-in">
+            <h2>Key Team Members</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="images/iste logo 2.jpg" alt="Mithun D Budhya">
+                    <h3>Mithun D Budhya</h3>
+                    <p>ISTE Coordinator</p>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i> +91 7892988796
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="images/iste logo 2.jpg" alt="Team Member">
+                    <h3>Team Member</h3>
+                    <p>ISTE Representative</p>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i> +91 1234567891
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="images/iste logo 2.jpg" alt="Faculty Advisor">
+                    <h3>Faculty Advisor</h3>
+                    <p>Department Head</p>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i> advisor@pesce.ac.in
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/pesce.iste/" target="_blank" class="social-link">
+                <img src="images/instalogo.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/company/iste-pesce/" target="_blank" class="social-link">
+                <img src="images/linkedinlogo.png" alt="LinkedIn">
+            </a>
+            <a href="mailto:iste@pesce.ac.in" class="social-link">
+                <img src="images/maillogo.png" alt="Gmail">
+            </a>
+        </div>
+        <p class="footer-text">© 2024 ISTE PESCE. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particleBg = document.getElementById('particle-bg');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particleBg.appendChild(particle);
+            }
+        }
+
+        // Form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message (you can integrate with your backend here)
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+
+</html>
