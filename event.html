@@ -87,6 +87,15 @@
             transition: all 0.3s ease;
         }
 
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3rem;
+        }
+
         .navbar .brand {
             display: flex;
             align-items: center;
@@ -569,7 +578,8 @@
 
         .footer-text {
             color: #cbd5e1;
-            font-size: 0.9rem;
+            font-size: 1.3rem;
+            font-weight: 500;
         }
 
         /* Responsive Design */
@@ -644,13 +654,14 @@
 
     <!-- Navigation -->
     <nav class="navbar">
-        <a href="index.html" class="brand">
-            <div class="logo">
-                <span>ISTE</span>
-            </div>
-            <span class="site-title">ISTE</span>
-        </a>
-        <ul class="nav-links">
+        <div class="nav-container">
+            <a href="index.html" class="brand">
+                <div class="logo">
+                    <span>ISTE</span>
+                </div>
+                <span class="site-title">ISTE</span>
+            </a>
+            <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="event.html">Event</a></li>
             <li class="dropdown">
@@ -663,7 +674,8 @@
             <li><a href="our_team.html">Our Team</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <li><a href="aboutus.html">About Us</a></li>
-        </ul>
+            </ul>
+        </div>
     </nav>
 
     <!-- Hero Section -->
